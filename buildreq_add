@@ -6,7 +6,6 @@ pytz-python
 python-dateutil-python
 requests-mock-python
 python-mock-python
-nose-cov-python
 nose-python
 funcsigs-python
 cov-core-python

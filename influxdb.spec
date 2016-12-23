@@ -4,7 +4,7 @@
 #
 Name     : influxdb
 Version  : 2.12.0
-Release  : 10
+Release  : 11
 URL      : https://pypi.python.org/packages/source/i/influxdb/influxdb-2.12.0.tar.gz
 Source0  : https://pypi.python.org/packages/source/i/influxdb/influxdb-2.12.0.tar.gz
 Summary  : InfluxDB client
@@ -14,7 +14,6 @@ Requires: influxdb-python
 BuildRequires : cov-core-python
 BuildRequires : coverage-python
 BuildRequires : funcsigs-python
-BuildRequires : nose-cov-python
 BuildRequires : nose-python
 BuildRequires : pbr
 BuildRequires : pip
@@ -36,7 +35,6 @@ InfluxDB-Python is a client for interacting with InfluxDB_.
 %package python
 Summary: python components for the influxdb package.
 Group: Default
-Requires: nose-cov-python
 Requires: nose-python
 Requires: python-dateutil-python
 Requires: pytz-python
@@ -51,6 +49,7 @@ python components for the influxdb package.
 %setup -q -n influxdb-2.12.0
 
 %build
+export LANG=C
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
