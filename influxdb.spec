@@ -4,7 +4,7 @@
 #
 Name     : influxdb
 Version  : 2.12.0
-Release  : 12
+Release  : 13
 URL      : https://pypi.python.org/packages/source/i/influxdb/influxdb-2.12.0.tar.gz
 Source0  : https://pypi.python.org/packages/source/i/influxdb/influxdb-2.12.0.tar.gz
 Summary  : InfluxDB client
