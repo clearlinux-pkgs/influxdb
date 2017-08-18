@@ -4,13 +4,20 @@
 #
 Name     : influxdb
 Version  : 2.12.0
-Release  : 13
-URL      : https://pypi.python.org/packages/source/i/influxdb/influxdb-2.12.0.tar.gz
-Source0  : https://pypi.python.org/packages/source/i/influxdb/influxdb-2.12.0.tar.gz
+Release  : 14
+URL      : http://pypi.debian.net/influxdb/influxdb-2.12.0.tar.gz
+Source0  : http://pypi.debian.net/influxdb/influxdb-2.12.0.tar.gz
 Summary  : InfluxDB client
 Group    : Development/Tools
 License  : MIT
 Requires: influxdb-python
+Requires: nose
+Requires: python-dateutil
+Requires: python-mock
+Requires: pytz
+Requires: requests
+Requires: requests-mock
+Requires: six
 BuildRequires : cov-core-python
 BuildRequires : coverage-python
 BuildRequires : funcsigs-python
@@ -29,17 +36,10 @@ BuildRequires : six
 
 %description
 InfluxDB-Python is a client for interacting with InfluxDB_.
-.. image:: https://travis-ci.org/influxdata/influxdb-python.svg?branch=master
-:target: https://travis-ci.org/influxdata/influxdb-python
 
 %package python
 Summary: python components for the influxdb package.
 Group: Default
-Requires: nose-python
-Requires: python-dateutil-python
-Requires: pytz-python
-Requires: requests-mock-python
-Requires: requests-python
 
 %description python
 python components for the influxdb package.
@@ -49,20 +49,27 @@ python components for the influxdb package.
 %setup -q -n influxdb-2.12.0
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1484550092
+export SOURCE_DATE_EPOCH=1503093591
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1484550092
+export SOURCE_DATE_EPOCH=1503093591
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+echo ----[ mark ]----
+cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
+echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
 
 %files python
 %defattr(-,root,root,-)
-/usr/lib/python*/*
+/usr/lib/python2*/*
+/usr/lib/python3*/*
