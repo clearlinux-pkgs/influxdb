@@ -4,7 +4,7 @@
 #
 Name     : influxdb
 Version  : 5.0.0
-Release  : 17
+Release  : 18
 URL      : http://pypi.debian.net/influxdb/influxdb-5.0.0.tar.gz
 Source0  : http://pypi.debian.net/influxdb/influxdb-5.0.0.tar.gz
 Summary  : InfluxDB client
@@ -13,10 +13,11 @@ License  : MIT
 Requires: influxdb-python3
 Requires: influxdb-python
 Requires: nose
+Requires: nose-cov
 Requires: python-dateutil
-Requires: python-mock
 Requires: pytz
 Requires: requests
+Requires: requests-mock
 Requires: six
 BuildRequires : cov-core-python
 BuildRequires : coverage-python
@@ -63,7 +64,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1526164402
+export SOURCE_DATE_EPOCH=1528564497
 python3 setup.py build -b py3
 
 %install
