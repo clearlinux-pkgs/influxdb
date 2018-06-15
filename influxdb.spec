@@ -23,7 +23,7 @@ BuildRequires : nose-python
 BuildRequires : pbr
 BuildRequires : pip
 BuildRequires : python-dateutil-python
-BuildRequires : python-dev
+
 BuildRequires : python-mock-python
 BuildRequires : python3-dev
 BuildRequires : pytz-python
