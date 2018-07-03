@@ -4,7 +4,7 @@
 #
 Name     : influxdb
 Version  : 5.0.0
-Release  : 22
+Release  : 23
 URL      : http://pypi.debian.net/influxdb/influxdb-5.0.0.tar.gz
 Source0  : http://pypi.debian.net/influxdb/influxdb-5.0.0.tar.gz
 Summary  : InfluxDB client
