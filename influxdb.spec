@@ -4,7 +4,7 @@
 #
 Name     : influxdb
 Version  : 5.2.1
-Release  : 29
+Release  : 30
 URL      : https://files.pythonhosted.org/packages/0a/a9/9dc769bf971ce8b1daf653a3c90339dbbd4d3c23fca57ac48ede26592b5d/influxdb-5.2.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/0a/a9/9dc769bf971ce8b1daf653a3c90339dbbd4d3c23fca57ac48ede26592b5d/influxdb-5.2.1.tar.gz
 Summary  : InfluxDB client
