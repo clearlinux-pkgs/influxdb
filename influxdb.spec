@@ -4,7 +4,7 @@
 #
 Name     : influxdb
 Version  : 5.2.3
-Release  : 37
+Release  : 38
 URL      : https://files.pythonhosted.org/packages/d2/0d/351a346886ecbe61211cbfcad8ac73f99f5a9bf526916631c5668dbad601/influxdb-5.2.3.tar.gz
 Source0  : https://files.pythonhosted.org/packages/d2/0d/351a346886ecbe61211cbfcad8ac73f99f5a9bf526916631c5668dbad601/influxdb-5.2.3.tar.gz
 Summary  : Scalable datastore for metrics, events, and real-time analytics
@@ -62,6 +62,7 @@ python components for the influxdb package.
 Summary: python3 components for the influxdb package.
 Group: Default
 Requires: python3-core
+Provides: pypi(influxdb)
 
 %description python3
 python3 components for the influxdb package.
@@ -69,13 +70,14 @@ python3 components for the influxdb package.
 
 %prep
 %setup -q -n influxdb-5.2.3
+cd %{_builddir}/influxdb-5.2.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1566906496
+export SOURCE_DATE_EPOCH=1582937744
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
@@ -89,7 +91,7 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/influxdb
-cp LICENSE %{buildroot}/usr/share/package-licenses/influxdb/LICENSE
+cp %{_builddir}/influxdb-5.2.3/LICENSE %{buildroot}/usr/share/package-licenses/influxdb/d45224050534c14f38d6113040e010ae681323df
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -100,7 +102,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/influxdb/LICENSE
+/usr/share/package-licenses/influxdb/d45224050534c14f38d6113040e010ae681323df
 
 %files python
 %defattr(-,root,root,-)
