@@ -4,7 +4,7 @@
 #
 Name     : influxdb
 Version  : 5.2.3
-Release  : 38
+Release  : 39
 URL      : https://files.pythonhosted.org/packages/d2/0d/351a346886ecbe61211cbfcad8ac73f99f5a9bf526916631c5668dbad601/influxdb-5.2.3.tar.gz
 Source0  : https://files.pythonhosted.org/packages/d2/0d/351a346886ecbe61211cbfcad8ac73f99f5a9bf526916631c5668dbad601/influxdb-5.2.3.tar.gz
 Summary  : Scalable datastore for metrics, events, and real-time analytics
@@ -77,7 +77,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1582937744
+export SOURCE_DATE_EPOCH=1583158081
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
