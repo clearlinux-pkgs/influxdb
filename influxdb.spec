@@ -4,10 +4,10 @@
 #
 Name     : influxdb
 Version  : 5.3.0
-Release  : 40
+Release  : 41
 URL      : https://files.pythonhosted.org/packages/be/8d/85ec8f11299a6dfc115244db71fd8f13e9a69f5e9eb77dc3392f4f959e9a/influxdb-5.3.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/be/8d/85ec8f11299a6dfc115244db71fd8f13e9a69f5e9eb77dc3392f4f959e9a/influxdb-5.3.0.tar.gz
-Summary  : Scalable datastore for metrics, events, and real-time analytics
+Summary  : InfluxDB client
 Group    : Development/Tools
 License  : MIT
 Requires: influxdb-python = %{version}-%{release}
@@ -32,15 +32,10 @@ BuildRequires : requests
 BuildRequires : requests-mock-python
 BuildRequires : requests-python
 BuildRequires : six
+Patch1: 0001-Unpin-msgpack-dep.patch
 
 %description
-InfluxDB-Python
 ===============
-.. image:: https://travis-ci.org/influxdata/influxdb-python.svg?branch=master
-:target: https://travis-ci.org/influxdata/influxdb-python
-.. image:: https://readthedocs.org/projects/influxdb-python/badge/?version=latest&style
-:target: http://influxdb-python.readthedocs.org/
-:alt: Documentation Status
 
 %package python
 Summary: python components for the influxdb package.
@@ -56,11 +51,11 @@ Summary: python3 components for the influxdb package.
 Group: Default
 Requires: python3-core
 Provides: pypi(influxdb)
+Requires: pypi(msgpack)
+Requires: pypi(python_dateutil)
 Requires: pypi(pytz)
 Requires: pypi(requests)
 Requires: pypi(six)
-Requires: pypi(python_dateutil)
-Requires: pypi(msgpack)
 
 %description python3
 python3 components for the influxdb package.
@@ -69,18 +64,18 @@ python3 components for the influxdb package.
 %prep
 %setup -q -n influxdb-5.3.0
 cd %{_builddir}/influxdb-5.3.0
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1586810544
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1586812561
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
